@@ -16,7 +16,7 @@ if(isset($_REQUEST['code']) and !empty($_REQUEST['code'])) {
 				'client_secret' => 'PINTEREST_APPLICATION_CLIENT_SECRET', // CLIENT APPLICATION SECRET ID
 				'code' => $_REQUEST['code'] // THE RETURN FROM PINTEREST APPLICATION
 			);
-	$url = 'https://api.pinterest.com/v1/oauth/token';
+	$url = 'https://api.pinterest.com/v5/oauth/token';
 	
 	// NEED TO MAKE POST REQUEST FOR TOKEN AUTHORIZATION
 	$ch = curl_init(); 
@@ -33,7 +33,7 @@ if(isset($_REQUEST['code']) and !empty($_REQUEST['code'])) {
 	
 	// MAKE CALL FOR GET USER INFOMATION USING OFFLINE ACCESS TOKEN
 	if(!empty($accessToken)) {
-		$url = 'https://api.pinterest.com/v1/me/?fields=id,username,first_name,last_name,url,image[original,small]&access_token='.$accessToken;
+		$url = 'https://api.pinterest.com/v5/me/?fields=id,username,first_name,last_name,url,image[original,small]&access_token='.$accessToken;
 		
 		$ch = curl_init(); 
 		curl_setopt($ch, CURLOPT_URL, $url); 
